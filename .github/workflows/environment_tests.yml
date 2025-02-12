@@ -36,9 +36,6 @@ jobs:
         run: |
           echo "$BOB,${BOB}"
 
-      - name: show me env
+      - name: Print environment name
         run: |
-          echo "env1: ${{ github.jobs.main.environment }}"
-          echo "env2: ${{ github.environment }}"
-          echo ${{ github.environment }}
-          echo ${{ steps.step_id.outputs.url_output }}
+          echo "Environment name: ${{ job.environment.name }}"
