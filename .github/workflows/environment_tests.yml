@@ -41,4 +41,4 @@ jobs:
           echo "env1: ${{ github.jobs.main.environment }}"
           echo "env2: ${{ github.environment }}"
           echo ${{ github.environment }}
-          echo ${{ steps.main.output.url }}
+          echo ${{ steps.step_id.outputs.url_output }}
