@@ -5,21 +5,16 @@ on:
   push:
 
 jobs:
-  main:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-22.04]
-
-    permissions:
-      contents: read
-      id-token: write # Required for AWS OIDC authentication
-
-    runs-on: ${{ matrix.os }}
-
-    environment: ${{ var.ENV_NAME }} 
-
+  example:
+    runs-on: ubuntu-latest
+    environment: development
     steps:
-      - name: In env ${{ var.ENV_NAME }}
-        run: |
-          echo "env_name: ${{ var.ENV_NAME }}"
+      - uses: qoomon/actions--context@v2
+        id: context
+
+      - run: |
+          echo "Current Environment: ${{ steps.context.outputs.environment }}"
+          echo "Job Logs: ${{ steps.context.outputs.job_log_url }}"
+      
+      - run: |
+          echo "${{ vars.ENV_NAME }}"
