@@ -32,4 +32,4 @@ jobs:
 
       - name: See bob
         run: |
-          echo "$BOB,${BOB},${{BOB}}"
+          echo "$BOB,${BOB}"
