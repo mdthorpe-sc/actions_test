@@ -38,4 +38,5 @@ jobs:
 
       - name: show me env
         run: |
-          echo "${{ github }}"
+          echo "env1: ${{ github.jobs.main.environment }}"
+          echo "env2: ${{ github.environment }}"
