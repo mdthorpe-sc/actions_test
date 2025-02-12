@@ -38,4 +38,4 @@ jobs:
 
       - name: show me env
         run: |
-          echo ${{ steps.main.environment }}
+          echo "${{ github }}"
