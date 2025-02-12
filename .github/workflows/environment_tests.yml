@@ -20,6 +20,6 @@ jobs:
     environment: ${{ var.ENV_NAME }} 
 
     steps:
-      name: In env ${{ var.ENV_NAME }}
-      run: |
-        echo "env_name: ${{ var.ENV_NAME }}"
+      - name: In env ${{ var.ENV_NAME }}
+        run: |
+          echo "env_name: ${{ var.ENV_NAME }}"
