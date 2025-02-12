@@ -17,7 +17,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    environment: development
+    environment: 
+      name: development
+      url: ${{ steps.main.outputs.url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -33,3 +35,7 @@ jobs:
       - name: See bob
         run: |
           echo "$BOB,${BOB}"
+
+      - name: show me env
+        run: |
+          echo ${{ jobs.main.environment.name }}
