@@ -17,25 +17,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    environment: 
-      name: development
-      url: ${{ steps.main.outputs.url }}
+    environment: ${{ var.ENV_NAME }} 
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setting env var
-        run: |
-          echo "BOB=DOBBS" >> $GITHUB_ENV
-
-      - name: What Can I See
-        run: |
-          /bin/env
-
-      - name: See bob
-        run: |
-          echo "$BOB,${BOB}"
-
-      - name: Print environment name
-        run: |
-          echo "Environment name: ${{ job.environment.name }}"
+      name: In env ${{ var.ENV_NAME }}
+      run: |
+        echo "env_name: ${{ var.ENV_NAME }}"
