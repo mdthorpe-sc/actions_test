@@ -1,0 +1,26 @@
+name: Reading from the Environment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04]
+
+    permissions:
+      contents: read
+      id-token: write # Required for AWS OIDC authentication
+
+    runs-on: ${{ matrix.os }}
+
+    environment: development
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: What Can I See
+        run:
+          echo $GITHUB_ENV
