@@ -23,4 +23,5 @@ jobs:
 
       - name: What Can I See
         run:
-          echo $GITHUB_ENV
+          echo "BOB=DOBBS" >> $GITHUB_ENV
+          cat $GITHUB_ENV
