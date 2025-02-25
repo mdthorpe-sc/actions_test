@@ -13,3 +13,5 @@ jobs:
         env:
           VARS_JSON: ${{ toJSON(vars) }}
         run: echo "${VARS_JSON}"
+      - name: Can I just print VARS_JSON
+        run: echo "${vars}"
