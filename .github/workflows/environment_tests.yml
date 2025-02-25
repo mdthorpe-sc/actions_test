@@ -9,15 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: development
     steps:
-      - uses: qoomon/actions--context@v2
-        id: context
-
-      - run: |
-          echo "Current Environment: ${{ steps.context.outputs.environment }}"
-          echo "Job Logs: ${{ steps.context.outputs.job_log_url }}"
-      
-      - run: |
-          echo "${{ vars.ENV_NAME }}"
-
-      - run: |
-          echo "${{vars}}"
+      - name: Dump vars context
+        env:
+          VARS_JSON: ${{ toJSON(vars) }}
+        run: echo "${VARS_JSON}"
