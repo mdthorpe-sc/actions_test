@@ -15,7 +15,7 @@ jobs:
         run: echo "${VARS_JSON}" > env.json
       - name: Dump env.json to env.bash file
         run: |
-          jq --from-file env.json \
+          cat env.json | jq \
             --compact-output \
             --raw-output \
             --monochrome-output \
