@@ -12,6 +12,14 @@ jobs:
       - name: Dump vars context
         env:
           VARS_JSON: ${{ toJSON(vars) }}
-        run: echo "${VARS_JSON}"
-      - name: Can I just print VARS_JSON
-        run: echo "${{vars}}"
+        run: echo "${VARS_JSON}" > env.json
+      - name: Dump env.json to env.bash file
+        run: |
+          jq --from-file env.json \
+            --compact-output \
+            --raw-output \
+            --monochrome-output \
+            'to_entries | map("\(.key)=\(.value)") | .[]' > env.bash
+      - name: Show env.bash
+        run: cat env.bash
+
