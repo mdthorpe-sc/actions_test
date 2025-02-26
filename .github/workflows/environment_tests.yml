@@ -21,6 +21,6 @@ jobs:
             --monochrome-output \
             'to_entries | map("echo \"\(.key)=\(.value)\" >> $GITHUB_ENV") | .[]' > env.bash
       - name: Show env.bash
-        run: env.bash
+        run: bash ./env.bash
       - name: Show GITHUB_ENV
         run: echo "$SOME_VAR_1"
